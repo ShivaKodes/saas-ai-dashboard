@@ -32,18 +32,18 @@ export async function GET() {
       payment_method_types: ["card"],
       mode: "subscription",
       billing_address_collection: "auto",
-      customer_email: user.emailAddresses[0],
+      customer_email: user.emailAddresses[0].emailAddress,
       line_items: [
         {
           price_data: {
-            currency: "USD",
+            currency: "INR",
             product_data: {
               name: "Genie Pro",
               description: "Unlimited AI Generations",
             },
-            unit_amount: 2000,
+            unit_amount: 20000,
             recurring: {
-              Interval: "month",
+              interval: "month",
             },
           },
           quantity: 1,
@@ -53,9 +53,11 @@ export async function GET() {
         userId,
       },
     });
-    return new NextResponse(JSON.stringify{url:stripeSession.url})
+    return new NextResponse(JSON.stringify({url:stripeSession.url}))
   } catch (error) {
     console.log("[STRIPE_ERROR]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
+
+
