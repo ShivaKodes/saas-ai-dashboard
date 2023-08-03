@@ -26,8 +26,11 @@ import {
 import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
 import { DownloadCloud, ImageIcon } from "lucide-react";
+import { useProModal } from "@/hooks/useProModal";
+
 
 const ImagePage = () => {
+  const proModal=useProModal();
   const router = useRouter();
 
   const [images, setImages] = useState<string[]>([]);
@@ -54,8 +57,10 @@ const ImagePage = () => {
 
       form.reset();
     } catch (error: any) {
-      //Add pro modal
-      console.log(error);
+      
+      if(error?.response?.status===403){
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }
