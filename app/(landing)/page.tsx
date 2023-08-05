@@ -4,6 +4,7 @@ import Link from "next/link";
 import {LandingNavbar} from "@/components/LandingNavbar"
 import {LandingHero} from "@/components/LandingHero"
 import {LandingContent} from "@/components/LandingContent"
+import { LandingFooter } from "@/components/LandingFooter";
 
 const LandingPage = () => {
   return (
@@ -11,6 +12,7 @@ const LandingPage = () => {
       <LandingNavbar/>
       <LandingHero/>
       <LandingContent/>
+      <LandingFooter/>
 
     </div>
   );

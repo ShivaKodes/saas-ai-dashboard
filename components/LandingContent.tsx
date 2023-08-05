@@ -1,31 +1,32 @@
 "use client";
 
+import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 
 const testimonials = [
   {
-    name: "Shiva",
-    avatar: "A",
+    name: "Shiva Kumar",
+    avatar: "S",
     title: "Software Engineer",
-    description: "Best of all tools",
+    description: "Mind-blowing cretivity unleashed! This AI SAAS project is game changer. I generated stunning images and videos effortlessly. Highly recommended.",
   },
   {
-    name: "Shiva",
+    name: "Ankit Kumar Singh",
     avatar: "A",
     title: "Software Engineer",
-    description: "Best of all tools",
+    description: "Incredible music composition! This platform's AI blew my mind with it's musical genius. A must-try for anyone passionate about music.",
   },
   {
-    name: "Shiva",
+    name: "Aniket Parashar",
     avatar: "A",
     title: "Software Engineer",
-    description: "Best of all tools",
+    description: "Instant magic! I created captivating videos in minutes using this platform.",
   },
   {
-    name: "Shiva",
-    avatar: "A",
+    name: "Mahiwal Sahu",
+    avatar: "M",
     title: "Software Engineer",
-    description: "Best of all tools",
+    description: "An AI wonderland! This platform's image generation capabilities are beyond belief. Unleash your imagination and div in!",
   },
 ];
 export const LandingContent = () => {
@@ -38,10 +39,15 @@ export const LandingContent = () => {
         {testimonials.map((item) => (
           <Card
             key={item.description}
-            className="bg-[#192339] border-none text-white"
+            className="bg-[#219ebc] border-none text-white"
           >
             <CardHeader>
               <CardTitle className="flex items-center gap-x-2">
+                <Avatar className="h-8 w-8">
+                  <AvatarFallback className="bg-gradient-to-tr from-red-600 to-blue-600 ">
+                    {item.avatar}
+                  </AvatarFallback>
+                </Avatar>
                 <div>
                   <p className="text-lg">{item.name}</p>
                   <p className="text-sm text-zinc-400">{item.title}</p>
