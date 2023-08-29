@@ -24,7 +24,7 @@ import BotAvatar from "@/components/BotAvatar";
 import { useProModal } from "@/hooks/useProModal";
 
 const CodePage = () => {
-  const proModal=useProModal();
+  const proModal = useProModal();
   const router = useRouter();
 
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
@@ -55,7 +55,7 @@ const CodePage = () => {
       form.reset();
     } catch (error: any) {
       //Add pro modal
-       if(error?.response?.status===403){
+      if (error?.response?.status === 403) {
         proModal.onOpen();
       }
     } finally {
@@ -67,7 +67,7 @@ const CodePage = () => {
     <div>
       <Heading
         title="Code Generation"
-        description="Khud se code krle Bsdke"
+        description="Generate Code"
         icon={Code}
         iconColor="text-green-700"
         bgColor="text-green-700/10"

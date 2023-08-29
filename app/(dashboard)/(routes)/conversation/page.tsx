@@ -22,9 +22,8 @@ import { UserAvatar } from "@/components/UserAvatar";
 import BotAvatar from "@/components/BotAvatar";
 import { useProModal } from "@/hooks/useProModal";
 
-
 const ConversationPage = () => {
-  const proModal=useProModal();
+  const proModal = useProModal();
   const router = useRouter();
 
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
@@ -54,7 +53,7 @@ const ConversationPage = () => {
 
       form.reset();
     } catch (error: any) {
-      if(error?.response?.status===403){
+      if (error?.response?.status === 403) {
         proModal.onOpen();
       }
     } finally {
@@ -66,7 +65,7 @@ const ConversationPage = () => {
     <div>
       <Heading
         title="Conversation"
-        description="kaa bsdke"
+        description="Chat with AI"
         icon={MessageSquare}
         iconColor="text-violet-500"
         bgColor="text-violet-500/10"

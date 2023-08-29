@@ -18,9 +18,8 @@ import { Empty } from "@/components/Empty";
 import { Loader } from "@/components/Loader";
 import { useProModal } from "@/hooks/useProModal";
 
-
 const MusicPage = () => {
-  const proModal=useProModal();
+  const proModal = useProModal();
   const router = useRouter();
 
   const [music, setMusic] = useState<string>();
@@ -41,7 +40,7 @@ const MusicPage = () => {
       setMusic(response.data.audio);
       form.reset();
     } catch (error: any) {
-      if(error?.response?.status===403){
+      if (error?.response?.status === 403) {
         proModal.onOpen();
       }
     } finally {
@@ -53,7 +52,7 @@ const MusicPage = () => {
     <div>
       <Heading
         title="Music Generation"
-        description="kaa bsdke"
+        description="Generate Music Using AI"
         icon={Music}
         iconColor="text-emerald-500"
         bgColor="text-emerald-500/10"

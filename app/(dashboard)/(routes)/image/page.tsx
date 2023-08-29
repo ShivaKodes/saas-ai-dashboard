@@ -28,9 +28,8 @@ import Image from "next/image";
 import { DownloadCloud, ImageIcon } from "lucide-react";
 import { useProModal } from "@/hooks/useProModal";
 
-
 const ImagePage = () => {
-  const proModal=useProModal();
+  const proModal = useProModal();
   const router = useRouter();
 
   const [images, setImages] = useState<string[]>([]);
@@ -57,8 +56,7 @@ const ImagePage = () => {
 
       form.reset();
     } catch (error: any) {
-      
-      if(error?.response?.status===403){
+      if (error?.response?.status === 403) {
         proModal.onOpen();
       }
     } finally {
@@ -70,7 +68,7 @@ const ImagePage = () => {
     <div>
       <Heading
         title="Image Generation"
-        description="Khud se painting bana laude"
+        description="Generate Image Using AI"
         icon={ImageIcon}
         iconColor="text-pink-700"
         bgColor="text-pink-700/10"
