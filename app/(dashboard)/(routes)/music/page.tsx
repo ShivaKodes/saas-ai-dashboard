@@ -21,6 +21,7 @@ import { useProModal } from "@/hooks/useProModal";
 const MusicPage = () => {
   const proModal = useProModal();
   const router = useRouter();
+  const [errorMsg, setErrorMsg] = useState("");
 
   const [music, setMusic] = useState<string>();
 
@@ -42,6 +43,9 @@ const MusicPage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      }
+      if (error?.response?.status === 500) {
+        setErrorMsg("I have run out of API credits! Try using other tools");
       }
     } finally {
       router.refresh();

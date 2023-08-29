@@ -31,6 +31,7 @@ import { useProModal } from "@/hooks/useProModal";
 const ImagePage = () => {
   const proModal = useProModal();
   const router = useRouter();
+  const [errorMsg, setErrorMsg] = useState("");
 
   const [images, setImages] = useState<string[]>([]);
 
@@ -58,6 +59,9 @@ const ImagePage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      }
+      if (error?.response?.status === 500) {
+        setErrorMsg("I have run out of API credits! Try using other tools");
       }
     } finally {
       router.refresh();
@@ -165,7 +169,10 @@ const ImagePage = () => {
             </div>
           )}
           {images.length === 0 && !isLoading && (
-            <Empty label="No images generated" />
+            <>
+              <p className="text-center font-bold">{errorMsg}</p>
+              <Empty label="No images generated" />
+            </>
           )}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
             {images.map((src) => (

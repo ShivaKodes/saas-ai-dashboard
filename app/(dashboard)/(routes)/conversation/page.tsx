@@ -25,6 +25,7 @@ import { useProModal } from "@/hooks/useProModal";
 const ConversationPage = () => {
   const proModal = useProModal();
   const router = useRouter();
+  const [errorMsg, setErrorMsg] = useState("");
 
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
@@ -55,6 +56,9 @@ const ConversationPage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      }
+      if (error?.response?.status === 500) {
+        setErrorMsg("I have run out of API credits! Try using other tools");
       }
     } finally {
       router.refresh();
@@ -108,7 +112,10 @@ const ConversationPage = () => {
             </div>
           )}
           {messages.length === 0 && !isLoading && (
-            <Empty label="Let's start a connversation" />
+            <>
+              <p className="text-center font-bold">{errorMsg}</p>
+              <Empty label="No images generated" />
+            </>
           )}
           <div className="flex flex-col-reverse gap-y-4 ">
             {messages.map((message) => (
